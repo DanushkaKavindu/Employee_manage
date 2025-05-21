@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
+</head>
+<body>
+    <div class="header-bar">Employee Management System</div>
+    <div class="main-content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="flash-messages-container"> {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+        <div class="button-container-horizontal"> <a href="#" class="button-homepage">Add Employee</a>
+            <a href="#" class="button-homepage">Show Employee</a>
+            <a href="#" class="button-homepage">Reports</a>
+        </div>
+        <a href="{{ url_for('logout') }}" class="logout-button">Logout</a> </div>
+</body>
+</html>
